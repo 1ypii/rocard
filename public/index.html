@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rocard</title>
+<meta name="description" content="make a mockup of the roblox card with your own avatar and name on it">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <span class="brand">rocard</span>
+  <form id="lookup" autocomplete="off">
+    <input id="name" name="name" type="text" maxlength="20" spellcheck="false" autocapitalize="off" placeholder="roblox username" aria-label="roblox username">
+    <button id="go" class="solid" type="submit">make card</button>
+  </form>
+  <p id="status" class="status" role="status"></p>
+</header>
+
+<main>
+  <aside class="panel">
+    <section>
+      <h2>avatar</h2>
+      <div id="kinds" class="seg">
+        <button type="button" data-kind="head">headshot</button>
+        <button type="button" data-kind="bust" class="on">bust</button>
+        <button type="button" data-kind="full">full body</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>background</h2>
+      <div id="swatches" class="swatches"></div>
+      <div class="line">
+        <span>color</span>
+        <input id="bgColor" type="color" value="#111111" aria-label="background color">
+      </div>
+      <div class="line">
+        <span>image or gif</span>
+        <div class="pair">
+          <button id="bgPick" type="button">upload</button>
+          <button id="bgClear" type="button" disabled>remove</button>
+        </div>
+        <input id="bgFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+      </div>
+      <div class="line">
+        <span>darken</span>
+        <input id="dim" type="range" min="0" max="0.8" step="0.01" value="0" aria-label="darken background">
+      </div>
+    </section>
+
+    <section>
+      <h2>text</h2>
+      <div class="line">
+        <span>color</span>
+        <input id="ink" type="color" value="#f2f2f2" aria-label="text color">
+      </div>
+    </section>
+
+    <section>
+      <h2>elements</h2>
+      <div id="items" class="items"></div>
+      <div class="line">
+        <span>size</span>
+        <input id="scale" type="range" min="0.3" max="2.5" step="0.01" value="1" disabled aria-label="element size">
+      </div>
+      <button id="reset" type="button" class="wide">reset layout</button>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <div class="scene">
+      <div id="flip" class="flip">
+        <canvas id="front" width="1012" height="638"></canvas>
+        <canvas id="back" width="1012" height="638"></canvas>
+      </div>
+    </div>
+    <p class="hint">drag anything on the card to move it</p>
+    <div class="bar">
+      <div id="sides" class="seg">
+        <button type="button" data-side="front" class="on">front</button>
+        <button type="button" data-side="back">back</button>
+      </div>
+      <div class="pair">
+        <button id="savePng" type="button" class="solid">png</button>
+        <button id="saveGif" type="button" class="solid">gif</button>
+        <button id="saveFlip" type="button" class="solid">flip gif</button>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
